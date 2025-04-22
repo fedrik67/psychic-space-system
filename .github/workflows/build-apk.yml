@@ -37,7 +37,7 @@ jobs:
         cordova platform add android
 
     - name: Build APK
-  run: |
+      run: |
     cd cordovaApp
     cordova build android
     if [ ! -f platforms/android/app/build/outputs/apk/debug/app-debug.apk ]; then
