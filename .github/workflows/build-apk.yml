@@ -37,12 +37,18 @@ jobs:
         cordova platform add android
 
     - name: Build APK
-      run: |
-        cd cordovaApp
-        cordova build android
+  run: |
+    cd cordovaApp
+    cordova build android
+    if [ ! -f platforms/android/app/build/outputs/apk/debug/app-debug.apk ]; then
+      echo "APK file not found! Build may have failed."
+      exit 1
+    fi
 
     - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
         name: app-release-apk
         path: cordovaApp/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+    
+    
