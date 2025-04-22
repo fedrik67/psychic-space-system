@@ -45,10 +45,11 @@ jobs:
           exit 1
         fi
 
+    - name: Debug APK Path
+      run: ls -l cordovaApp/platforms/android/app/build/outputs/apk/debug/
+
     - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
         name: app-release-apk
         path: cordovaApp/platforms/android/app/build/outputs/apk/debug/app-debug.apk
-    
-    
